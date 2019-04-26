@@ -2,74 +2,46 @@
 <html lang="{{ site.lang | default: "en-US" }}">
   <head>
 
+    {% if site.google_analytics %}
+      <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', '{{ site.google_analytics }}');
+      </script>
+    {% endif %}
     <meta charset="UTF-8">
- {% seo %}
+
+{% seo %}
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#157878">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
   </head>
   <body>
+    <a id="skip-to-content" href="#content">Skip to the content.</a>
+
     <header class="page-header" role="banner">
-        <h1 class="project-name">{{ default: page.title | site.title | default: site.github.repository_name }}</h1>
-        <h2 class="project-tagline">{{ default: page.description | site.description | default: site.github.project_tagline }}</h2>
+      <h1 class="project-name">{{ page.title | default: site.title | default: site.github.repository_name }}</h1>
+      <h2 class="project-tagline">{{ page.description | default: site.description | default: site.github.project_tagline }}</h2>
+      {% if site.github.is_project_page %}
+        <a href="{{ site.github.repository_url }}" class="btn">View on GitHub</a>
+      {% endif %}
+      {% if site.show_downloads %}
+        <a href="{{ site.github.zip_url }}" class="btn">Download .zip</a>
+        <a href="{{ site.github.tar_url }}" class="btn">Download .tar.gz</a>
+      {% endif %}
     </header>
 
     <main id="content" class="main-content" role="main">
-   <p><strong>Description</strong>: With the prevalence of networked systems, such as social media and protein-protein interaction networks, learning from networks has become a crucial task in practice. It is well recognized that network data is sophisticated and large-scale. In this tutorial, we systematically introduce learning from networks algorithms, along with the theory and applications. After introducing the history and formally defining the problems, following the trend, we roughly categorize the learning algorithms into four classes, i.e., feature selection based, network embedding based, attributed network embedding based, and graph neural based. Theoretical analysis and real-world applications are given for each class. We conclude with open problems and recent trends.</p>
-      <div class="divider line"></div>
-      
-<h3><font size="5"><font color="#03CFFC">Tutorial Outline</font></font></h3>
-      <ol>
-        <li>Motivations</li>
-            <ul class="list square">
-            <li>The ubiquity and importance of networks</li>
-            <li>Why is it challenging to analyze and learn from networks</li>
-            <li>Traditional ways of network analysis and their limitations</li>
-            <li>Recent trends</li>
-            </ul>
-        <li>Learn from Networks with Feature Selection</li>
-            <ul class="list square">
-            <li>Semi-supervised (graph regularization based)</li>
-            <li>Unsupervised</li>
-            <li>Complex networks</li>
-            </ul>
-        <li>Network Embedding</li>
-            <ul class="list square">
-            <li>Problem formulation</li>
-            <li>Algorithms</li>
-            <li>Theory</li>
-            <li>Within an open environment </li>
-            <li>Applications</li>
-            </ul>
-        <li>Attributed Network Embedding</li>
-            <ul class="list square">
-                <li>Mining attributed networks with shallow embedding</li>
-                <li>Mining attributed networks with deep embedding</li>
-                <li>Human-centric network analysis</li>
-                <li>Applications</li>
-            </ul>
-        <li>Graph Neural Networks</li>
-            <ul class="list square">
-            <li>Graph neural networks</li>
-            <li>Dynamic &amp; heterogeneous GNN</li>
-            <li>Billion-scale systems, applications, and challenges</li>
-            </ul>
-        <li>Summary</li>
-      </ol>
-      
-<h3><font size="5"><font color="#03CFFC">Tutors &amp; Contributors</font></font></h3>
-<ul class="list square">
-    <li>Xiao Huang</li>
-    <li>B</li>
-</ul>
+      {{ content }}
 
       <footer class="site-footer">
         {% if site.github.is_project_page %}
-        <font size="-2">
           <span class="site-footer-owner"><a href="{{ site.github.repository_url }}">{{ site.github.repository_name }}</a> is maintained by <a href="{{ site.github.owner_url }}">{{ site.github.owner_name }}</a>.</span>
-        </font>
         {% endif %}
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a>.</span>
       </footer>
     </main>
   </body>
