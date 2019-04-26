@@ -1,3 +1,5 @@
 theme: jekyll-theme-cayman
 plugins:
   - jekyll-seo-tag
+page.title: Learning From Networks
+page.description: - Algorithms, Theory, &amp; Applications
