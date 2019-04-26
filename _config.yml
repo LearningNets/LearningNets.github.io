@@ -1,7 +1,4 @@
 # If you are building a GitHub project page then use these settings:
-url: "http://xhuang31.github.io/KDD19_Tutorial"
-baseurl: "/KDD19_Tutorial"
-
 theme: jekyll-theme-cayman
 plugins:
   - jekyll-seo-tag
